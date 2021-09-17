@@ -20,11 +20,10 @@ public class LoginController {
 
 
     @PostMapping("/user/login")
-    public @ResponseBody User login(@RequestBody UserLoginDTO userLoginDTO) throws IncorrectLoginOrPasswordException {
+    public @ResponseBody
+    User login(@RequestBody UserLoginDTO userLoginDTO) throws IncorrectLoginOrPasswordException {
         return defaultLoginService.login(userLoginDTO);
     }
-
-
 
 
 }

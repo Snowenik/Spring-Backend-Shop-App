@@ -66,7 +66,8 @@ public class DefaultBasketService implements BasketService {
         User user = userRepository.findById(basketTransactionDTO.getUserId()).get();
         BigDecimal total = new BigDecimal(0);
         ObjectMapper mapper = new ObjectMapper();
-        List<Long> productList = mapper.readValue(basketTransactionDTO.getProducts(), new TypeReference<List<Long>>(){});
+        List<Long> productList = mapper.readValue(basketTransactionDTO.getProducts(), new TypeReference<List<Long>>() {
+        });
         if (productList.size() <= 0) {
             throw new EmptyBasketException("Twój koszyk jest pusty");
         }

@@ -21,7 +21,8 @@ public class ProductController {
 
 
     @PostMapping("/products")
-    public @ResponseBody List<Product> getProducts(@RequestBody ProductCategoryDTO productCategoryDTO) {
+    public @ResponseBody
+    List<Product> getProducts(@RequestBody ProductCategoryDTO productCategoryDTO) {
         return defaultProductService.getProductByProductCategory(productCategoryDTO);
     }
 

@@ -21,11 +21,10 @@ public class TransactionController {
 
 
     @PostMapping("/user/transactions")
-    public @ResponseBody List<Transaction> getUserTransactions(@RequestBody UserTransactionDTO userTransactionDTO) throws UserDoesntExistException {
+    public @ResponseBody
+    List<Transaction> getUserTransactions(@RequestBody UserTransactionDTO userTransactionDTO) throws UserDoesntExistException {
         return defaultTransactionService.getUserTransactions(userTransactionDTO);
     }
-
-
 
 
 }

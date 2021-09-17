@@ -49,14 +49,12 @@ public class UserController {
     private PasswordEncoder passwordEncoder;
 
 
-
     @PostMapping("/authenticate")
     public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) throws Exception {
         try {
             authenticationManager
                     .authenticate(new UsernamePasswordAuthenticationToken(authenticationRequest.getLogin(), authenticationRequest.getPassword()));
-        }
-        catch (BadCredentialsException e) {
+        } catch (BadCredentialsException e) {
             throw new Exception("Nieprawidłowy login lub hasło");
         }
 
@@ -70,37 +68,44 @@ public class UserController {
 
 
     @PostMapping("/user/basket")
-    public @ResponseBody List<Product> getUserBasketProductList(@RequestBody UserBasketDTO userBasketDTO) throws UserDoesntExistException {
+    public @ResponseBody
+    List<Product> getUserBasketProductList(@RequestBody UserBasketDTO userBasketDTO) throws UserDoesntExistException {
         return defaultUserService.getUserBasketProductList(userBasketDTO);
     }
 
     @PostMapping("/user/account/deposit")
-    public @ResponseBody String depositMoney(@RequestBody UserAccountDTO userAccountDTO) throws UserDoesntExistException, InvalidMoneyDataException {
+    public @ResponseBody
+    String depositMoney(@RequestBody UserAccountDTO userAccountDTO) throws UserDoesntExistException, InvalidMoneyDataException {
         return defaultUserService.depositMoney(userAccountDTO);
     }
 
     @PostMapping("/user/account/withdraw")
-    public @ResponseBody String withdrawMoney(@RequestBody UserAccountDTO userAccountDTO) throws NotEnoughMoneyException, UserDoesntExistException, InvalidMoneyDataException {
+    public @ResponseBody
+    String withdrawMoney(@RequestBody UserAccountDTO userAccountDTO) throws NotEnoughMoneyException, UserDoesntExistException, InvalidMoneyDataException {
         return defaultUserService.withdrawMoney(userAccountDTO);
     }
 
     @PostMapping("/user/account/balance")
-    public @ResponseBody BigDecimal getUserBalance(@RequestBody UserBalanceDTO userBalanceDTO) throws UserDoesntExistException{
+    public @ResponseBody
+    BigDecimal getUserBalance(@RequestBody UserBalanceDTO userBalanceDTO) throws UserDoesntExistException {
         return defaultUserService.getUserBalance(userBalanceDTO);
     }
 
     @PostMapping("/user/change/password")
-    public @ResponseBody String changePassword(@RequestBody UserPasswordDTO userPasswordDTO) throws InvalidPasswordException, PasswordsDontMatchException, UserDoesntExistException {
+    public @ResponseBody
+    String changePassword(@RequestBody UserPasswordDTO userPasswordDTO) throws InvalidPasswordException, PasswordsDontMatchException, UserDoesntExistException {
         return defaultUserService.changePassword(userPasswordDTO);
     }
 
     @PostMapping("/user/change/email")
-    public @ResponseBody String changeEmail(@RequestBody UserEmailDTO userEmailDTO) throws EmailAlreadyExistsException, UserDoesntExistException {
+    public @ResponseBody
+    String changeEmail(@RequestBody UserEmailDTO userEmailDTO) throws EmailAlreadyExistsException, UserDoesntExistException {
         return defaultUserService.changeEmail(userEmailDTO);
     }
 
     @PostMapping("/user/get")
-    public @ResponseBody User getUser(@RequestBody UserDTO userDTO) throws UserDoesntExistException {
+    public @ResponseBody
+    User getUser(@RequestBody UserDTO userDTO) throws UserDoesntExistException {
         return defaultUserService.getUser(userDTO);
     }
 }

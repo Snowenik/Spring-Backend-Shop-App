@@ -20,19 +20,21 @@ public class BasketController {
     private DefaultBasketService defaultBasketService;
 
 
-
     @PostMapping("/user/addToBasket")
-    public @ResponseBody String addToBasket(@RequestBody ProductBasketDTO productBasketDTO) throws UserDoesntExistException, ProductDoesntExistsException {
+    public @ResponseBody
+    String addToBasket(@RequestBody ProductBasketDTO productBasketDTO) throws UserDoesntExistException, ProductDoesntExistsException {
         return defaultBasketService.addToBasket(productBasketDTO);
     }
 
     @PostMapping("/user/removeFromBasket")
-    public @ResponseBody String removeFromBasket(@RequestBody ProductBasketDTO productBasketDTO) throws UserDoesntExistException, ProductDoesntExistsException {
+    public @ResponseBody
+    String removeFromBasket(@RequestBody ProductBasketDTO productBasketDTO) throws UserDoesntExistException, ProductDoesntExistsException {
         return defaultBasketService.removeFromBasket(productBasketDTO);
     }
 
     @PostMapping("/user/buy")
-    public @ResponseBody String buyProducts(@RequestBody BasketTransactionDTO basketTransactionDTO) throws Exception {
+    public @ResponseBody
+    String buyProducts(@RequestBody BasketTransactionDTO basketTransactionDTO) throws Exception {
         return defaultBasketService.buyProducts(basketTransactionDTO);
     }
 

@@ -19,11 +19,10 @@ public class RegistrationController {
 
 
     @PostMapping("/user/create")
-    public @ResponseBody String createNewUser(@RequestBody UserRegisterDTO userRegisterDTO) throws UserAlreadyExistsException {
+    public @ResponseBody
+    String createNewUser(@RequestBody UserRegisterDTO userRegisterDTO) throws UserAlreadyExistsException {
         return defaultRegistrationService.createNewAccount(userRegisterDTO);
     }
-
-
 
 
 }
